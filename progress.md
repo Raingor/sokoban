@@ -44,3 +44,13 @@
 - 工作流 https://github.com/Raingor/sokoban/actions/runs/44718772032 成功。
 - 站点：https://raingor.github.io/sokoban/ ，HTTP200；线上51/51浏览器检查通过，实际完成12关键盘序列及触屏多箱关卡。
 - 无pageerror/console/HTTP错误；线上截图与报告在被忽略的 `artifacts/online/`。
+
+## 2026-11-20 · 新增19位仓库陪伴员（与上述原版历史验收分开）
+
+- 收到主 Agent 新任务后仅修改 sokoban/，读取 xiaoxiaole/src/catalog.ts 的19人物；只复制19个 characters-2d/<id>.webp 到本项目 public，合计682,082字节，逐字节一致。没有复制全身图、PNG或Three，没有兄弟运行时依赖。
+- 新增独立 characters.ts / characters.css，在标题下用暖色名牌呈现当前头像、完整名字和「今日陪伴员」；原生 details/summary 展开19角色网格，不新增dialog、不覆盖棋盘、不替换原搬运员。
+- 所有角色按钮具有aria-label/aria-pressed、图像alt、可见焦点；选完收起，Esc收起恢复summary焦点。选择模块不接触规则或当前局面，方向键不会误走。
+- 独立版本化角色存储，try/catch覆盖访问/读写异常；坏JSON、非法id、错误版本回默认角色，写失败会提示且本次仍可选择。
+- 新增 characters.test.ts，实际 npm test **89/89通过**；npm run build **严格TS+Vite通过**。node --check scripts/characters-smoke.mjs通过。
+- 新增 scripts/characters-smoke.mjs：独立Chrome/GAME_URL，19图解码与所有角色选择、键盘/触屏/Esc、进度不重置、刷新、异常存储、360无溢出及截图。**遵照主 Agent 错峰安排，本轮没有启动浏览器，没有执行该脚本，未生成角色验收截图，不声称新版线上通过。**
+- README、task_plan同步区分历史和新版结果。新增角色代码冻结交回；由主 Agent 跑角色脚本与原玩法回归，再统一Git/Pages。本轮无Git/推送/发布/memory，也未改其他游戏或根计划。

@@ -5,7 +5,7 @@
 ## 仓库与在线试玩
 
 - GitHub：https://github.com/Raingor/sokoban
-- GitHub Pages：https://raingor.github.io/sokoban/ （已上线，线上51项真实浏览器检查通过）
+- GitHub Pages：https://raingor.github.io/sokoban/ （原版已上线，原版线上51项浏览器检查通过；新增19角色陪伴员尚待主 Agent 浏览器验收与发布）
 - main 推送自动测试全部关卡与规则，执行类型检查、构建并发布 Pages。
 
 ## 启动与验证
@@ -63,7 +63,7 @@ JSON 解析、版本、关卡 id、最佳步数字段均校验；损坏数据、
 - `src/solutions.json`：只供单测与浏览器测试使用的关卡合法解，不由产品代码导入，不打包为 UI 作弊入口。
 - `scripts/smoke.mjs`：真实 Chrome 键盘与触屏验收、错误采集与截图。
 
-## 已实跑的验收（2026-11-20）
+## 原版已实跑的验收（2026-11-20，新增角色前）
 
 | 命令 | 结果 |
 | --- | --- |
@@ -84,4 +84,24 @@ JSON 解析、版本、关卡 id、最佳步数字段均校验；损坏数据、
 - `level-picker.png`
 - `smoke-results.json`
 
-当前功能已冻结，等待主 Agent 独立复核并配置发布。已知范围限制仅为上述不保存中局、不做死锁检测/在线求解；没有待修复的已知功能阻塞。
+原版已由主 Agent 独立复核并发布；以上截图与浏览器结果是原版历史记录，不代表新增角色版已通过浏览器或线上验收。已知范围限制仅为上述不保存中局、不做死锁检测/在线求解。
+
+## 新增：19 位仓库陪伴员（2026-11-20）
+
+标题下的「今日陪伴员」显示人物头像和完整名字，点击可展开原生 details 网格，19 位角色全部可选。选择完成后自动收起，Esc 收起并把焦点送回 summary；角色按钮有可访问名称、aria-pressed、图片 alt 与明确焦点。头像不会覆盖棋盘，仍保留原 CSS 搬运员；切换陪伴员不会改变关卡、位置、步数或撤销历史。
+
+- 原人物身份与头像取自获批的 xiaoxiaole 目录，仅复制 19 张 `WebP`，合计 682,082 字节；没有复制全身图、PNG、Three 或兄弟项目运行时依赖。
+- `src/characters.ts` / `src/characters.css` 是独立模块，`public/characters-2d/` 存放本项目的头像副本；图片使用 `./characters-2d/<id>.webp`，兼容 Pages 子路径。
+- 独立存储 key：`puzzle-sokoban-character-v1`，保存 `{version:1,id}`。读取/写入/访问异常均捕获，损坏 JSON、非法 id 或版本回退自嘲熊；写入失败时仍可在本次会话切换并显示提示。不复用游戏进度 key。
+- 新增 `src/characters.test.ts`。本版已实跑 **89/89 单测通过**、`npm run build` 通过；19 张复制文件与源 WebP 逐字节一致，浏览器脚本已通过 `node --check`。
+- 遵照错峰安排，**本轮没有启动浏览器，也没有执行新增角色版的浏览器/线上测试**。下列命令供主 Agent 独立验收；原游戏 smoke 也应回归。
+
+```sh
+GAME_URL=http://localhost:5179 node scripts/characters-smoke.mjs
+GAME_URL=http://localhost:4179 node scripts/characters-smoke.mjs
+GAME_URL=http://localhost:4179 npm run test:browser
+```
+
+角色浏览器脚本使用独立 Chrome 上下文，验证 19 图解码/选择、键盘与 Esc、不重置游戏、刷新持久、损坏/非法/版本/禁用/配额异常存储、360px 折叠与展开无溢出、触屏选择及继续游戏。截图计划写入 `artifacts/characters-desktop.png`、`characters-picker.png`、`characters-mobile-360.png`、`characters-mobile-360-picker.png`，结果写入 `characters-results.json`；仅在实际运行后才产生这些验收产物。
+
+新增角色代码已交回冻结，等待主 Agent 浏览器验收与统一 Git / Pages 发布；没有把历史验收冒充新版结果。

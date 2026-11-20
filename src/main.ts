@@ -1,4 +1,5 @@
 import './style.css';
+import { mountCharacters } from './characters';
 import { createGame, isWon, move, parseLevel, undo, type Direction } from './engine';
 import { levels } from './levels';
 import { loadProgress, recordWin, saveProgress, type StorageLike } from './storage';
@@ -33,6 +34,7 @@ app.innerHTML = `
       <div><p class="eyebrow">A LITTLE WAREHOUSE</p><h1 id="title">小小仓库<span class="title-dot">。</span></h1><p class="intro-copy">把生活放慢，把木箱放好。</p></div>
       <div class="warehouse-stamp" aria-hidden="true"><span>用 心 归 位</span><strong>12</strong><span>个原创小关卡</span></div>
     </section>
+    <section id="companions-host" aria-label="仓库陪伴员"></section>
     <section class="play-layout" aria-label="推箱子游戏">
       <div class="board-column">
         <div class="board-heading"><p><span class="chapter" id="chapter"></span><span class="level-counter" id="level-counter"></span></p><button class="quiet-button" id="choose">${icon('grid')}选择关卡</button></div>
@@ -162,3 +164,4 @@ boardElement.addEventListener('keydown', event => {
 });
 boardElement.addEventListener('pointerdown', () => boardElement.focus({ preventScroll: true }));
 persist(); render();
+mountCharacters($('#companions-host'));
