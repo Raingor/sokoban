@@ -5,7 +5,7 @@
 ## 仓库与在线试玩
 
 - GitHub：https://github.com/Raingor/sokoban
-- GitHub Pages：https://raingor.github.io/sokoban/ （首次发布与线上验收进行中）
+- GitHub Pages：https://raingor.github.io/sokoban/ （已上线，线上51项真实浏览器检查通过）
 - main 推送自动测试全部关卡与规则，执行类型检查、构建并发布 Pages。
 
 ## 启动与验证

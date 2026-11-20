@@ -37,3 +37,10 @@
 - 开发服务 5179 与生产 preview 4179 继续运行，未停止其他服务。
 - 没有执行 Git、workflow、commit、push、deploy、Artifact、memory，也没有派发 Agent。
 - 没有已知功能阻塞；不做完备死锁检测、不做在线求解、不保存中局是本轮明确边界。
+
+## 主 Agent 独立验收与Pages发布
+- 独立73单测、严格构建与生产preview 51检查通过；magpie-vision核对390截图无溢出或遮挡。
+- 仓库：https://github.com/Raingor/sokoban ，首次提交 `8f73855`。
+- 工作流 https://github.com/Raingor/sokoban/actions/runs/44718772032 成功。
+- 站点：https://raingor.github.io/sokoban/ ，HTTP200；线上51/51浏览器检查通过，实际完成12关键盘序列及触屏多箱关卡。
+- 无pageerror/console/HTTP错误；线上截图与报告在被忽略的 `artifacts/online/`。
