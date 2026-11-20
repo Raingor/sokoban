@@ -5,7 +5,7 @@
 ## 仓库与在线试玩
 
 - GitHub：https://github.com/Raingor/sokoban
-- GitHub Pages：https://raingor.github.io/sokoban/ （原版已上线，原版线上51项浏览器检查通过；新增19角色陪伴员尚待主 Agent 浏览器验收与发布）
+- GitHub Pages：https://raingor.github.io/sokoban/ （19角色陪伴版已上线，线上26项头像检查及51项完整玩法回归通过；89项单测和严格构建通过）
 - main 推送自动测试全部关卡与规则，执行类型检查、构建并发布 Pages。
 
 ## 启动与验证
@@ -94,7 +94,7 @@ JSON 解析、版本、关卡 id、最佳步数字段均校验；损坏数据、
 - `src/characters.ts` / `src/characters.css` 是独立模块，`public/characters-2d/` 存放本项目的头像副本；图片使用 `./characters-2d/<id>.webp`，兼容 Pages 子路径。
 - 独立存储 key：`puzzle-sokoban-character-v1`，保存 `{version:1,id}`。读取/写入/访问异常均捕获，损坏 JSON、非法 id 或版本回退自嘲熊；写入失败时仍可在本次会话切换并显示提示。不复用游戏进度 key。
 - 新增 `src/characters.test.ts`。本版已实跑 **89/89 单测通过**、`npm run build` 通过；19 张复制文件与源 WebP 逐字节一致，浏览器脚本已通过 `node --check`。
-- 遵照错峰安排，**本轮没有启动浏览器，也没有执行新增角色版的浏览器/线上测试**。下列命令供主 Agent 独立验收；原游戏 smoke 也应回归。
+- 子Agent遵照错峰安排未启动浏览器；主Agent随后独立本地与线上均通过26项头像检查和51项玩法回归。下列命令可复验新版。
 
 ```sh
 GAME_URL=http://localhost:5179 node scripts/characters-smoke.mjs
@@ -104,4 +104,4 @@ GAME_URL=http://localhost:4179 npm run test:browser
 
 角色浏览器脚本使用独立 Chrome 上下文，验证 19 图解码/选择、键盘与 Esc、不重置游戏、刷新持久、损坏/非法/版本/禁用/配额异常存储、360px 折叠与展开无溢出、触屏选择及继续游戏。截图计划写入 `artifacts/characters-desktop.png`、`characters-picker.png`、`characters-mobile-360.png`、`characters-mobile-360-picker.png`，结果写入 `characters-results.json`；仅在实际运行后才产生这些验收产物。
 
-新增角色代码已交回冻结，等待主 Agent 浏览器验收与统一 Git / Pages 发布；没有把历史验收冒充新版结果。
+主Agent已推送人物版 `76e468e`，Pages部署44733738922成功，新版线上验收已完成；详见progress.md。

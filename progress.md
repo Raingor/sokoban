@@ -54,3 +54,9 @@
 - 新增 characters.test.ts，实际 npm test **89/89通过**；npm run build **严格TS+Vite通过**。node --check scripts/characters-smoke.mjs通过。
 - 新增 scripts/characters-smoke.mjs：独立Chrome/GAME_URL，19图解码与所有角色选择、键盘/触屏/Esc、进度不重置、刷新、异常存储、360无溢出及截图。**遵照主 Agent 错峰安排，本轮没有启动浏览器，没有执行该脚本，未生成角色验收截图，不声称新版线上通过。**
 - README、task_plan同步区分历史和新版结果。新增角色代码冻结交回；由主 Agent 跑角色脚本与原玩法回归，再统一Git/Pages。本轮无Git/推送/发布/memory，也未改其他游戏或根计划。
+
+## 主Agent人物版发布验收（2026-11-20）
+- 代码提交 `76e468e` 已推送main，Pages工作流 https://github.com/Raingor/sokoban/actions/runs/44733738922 成功。
+- 主Agent独立单测与生产构建通过；本地与线上均通过 26 项人物检查和 51 项完整玩法回归。
+- 线上地址 https://raingor.github.io/sokoban/ ，全部19张头像加载、选择与刷新保存、键盘与360px手机、存储异常降级通过；无页面、控制台或HTTP资源错误。
+- 新版已上线，上文子Agent“未启动浏览器/待主Agent发布”仅为历史交接状态；截图和JSON位于忽略的artifacts目录，不提交构建/凭据。
