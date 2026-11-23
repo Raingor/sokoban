@@ -108,4 +108,4 @@ GAME_URL=http://localhost:4179 npm run test:browser
 
 ## 图标来源
 
-页面 favicon 与界面图标于 2026-11-23 通过 opencli 从 [iconfont.cn](https://www.iconfont.cn/) 搜索采集；图标名称、ID、搜索词与落位见根目录 `../icons-source.md`。界面图标统一以 `currentColor` 渲染，favicon 使用本项目主题色。
+页面 favicon 与界面图标于 2026-11-23 通过 opencli 从 [iconfont.cn](https://www.iconfont.cn/) 搜索采集；图标名称、ID、搜索词与落位见 [ICONS.md](./ICONS.md)。界面图标统一以 `currentColor` 渲染，favicon 使用本项目主题色。
