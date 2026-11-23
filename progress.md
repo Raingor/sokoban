@@ -60,3 +60,11 @@
 - 主Agent独立单测与生产构建通过；本地与线上均通过 26 项人物检查和 51 项完整玩法回归。
 - 线上地址 https://raingor.github.io/sokoban/ ，全部19张头像加载、选择与刷新保存、键盘与360px手机、存储异常降级通过；无页面、控制台或HTTP资源错误。
 - 新版已上线，上文子Agent“未启动浏览器/待主Agent发布”仅为历史交接状态；截图和JSON位于忽略的artifacts目录，不提交构建/凭据。
+
+## 2026-11-23 · iconfont 图标重采
+
+- 通过 opencli 访问 iconfont.cn 搜索采集页面 favicon 与界面图标，图标名称、ID、搜索词和落位见根目录 `../icons-source.md`。
+- 新增 `public/favicon.svg`，`index.html` 改用该文件；界面图标统一以 `currentColor` 渲染，favicon 使用本项目主题色圆角底。
+- 品牌箱、选关九宫格、撤销、重置、帮助图标替换为 iconfont 版本。
+- `npm test`、`npm run build` 通过；浏览器冒烟 51 项通过，截图复核图标尺寸、对比度与语义正常。
+

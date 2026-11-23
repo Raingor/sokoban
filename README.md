@@ -105,3 +105,7 @@ GAME_URL=http://localhost:4179 npm run test:browser
 角色浏览器脚本使用独立 Chrome 上下文，验证 19 图解码/选择、键盘与 Esc、不重置游戏、刷新持久、损坏/非法/版本/禁用/配额异常存储、360px 折叠与展开无溢出、触屏选择及继续游戏。截图计划写入 `artifacts/characters-desktop.png`、`characters-picker.png`、`characters-mobile-360.png`、`characters-mobile-360-picker.png`，结果写入 `characters-results.json`；仅在实际运行后才产生这些验收产物。
 
 主Agent已推送人物版 `76e468e`，Pages部署44733738922成功，新版线上验收已完成；详见progress.md。
+
+## 图标来源
+
+页面 favicon 与界面图标于 2026-11-23 通过 opencli 从 [iconfont.cn](https://www.iconfont.cn/) 搜索采集；图标名称、ID、搜索词与落位见根目录 `../icons-source.md`。界面图标统一以 `currentColor` 渲染，favicon 使用本项目主题色。
